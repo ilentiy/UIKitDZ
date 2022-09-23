@@ -7,23 +7,28 @@
 
 import UIKit
 
+/// Авторизация пользователя
 final class ViewController: UIViewController {
     
-    var hidePass = false
     @IBOutlet weak var hidePassButton: UIButton!
     @IBOutlet weak var passTextField: UITextField!
     
+    var isHidePass = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        hidePassButton.addTarget(self, action: #selector(hidePassAction), for: .touchUpInside)
+        addTarget()
     }
     @IBAction func hidePassAction(_ sender: Any) {
-        if hidePass {
-            hidePass = false
+        if isHidePass {
+            isHidePass = false
             passTextField.isSecureTextEntry = false
         } else {
-            hidePass = true
+            isHidePass = true
             passTextField.isSecureTextEntry = true
         }
+    }
+    func addTarget() {
+        hidePassButton.addTarget(self, action: #selector(hidePassAction), for: .touchUpInside)
     }
 }
