@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// Вью
+///  Главный контроллер, который отображает преобразованное слово
 final class ViewController: UIViewController {
     
     var helloLabel: UILabel = {
