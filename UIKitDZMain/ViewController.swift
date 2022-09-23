@@ -8,9 +8,22 @@
 import UIKit
 
 final class ViewController: UIViewController {
-
+    
+    var hidePass = false
+    @IBOutlet weak var hidePassButton: UIButton!
+    @IBOutlet weak var passTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        hidePassButton.addTarget(self, action: #selector(hidePassAction), for: .touchUpInside)
+    }
+    @IBAction func hidePassAction(_ sender: Any) {
+        if hidePass {
+            hidePass = false
+            passTextField.isSecureTextEntry = false
+        } else {
+            hidePass = true
+            passTextField.isSecureTextEntry = true
+        }
     }
 }
