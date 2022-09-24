@@ -8,7 +8,7 @@
 import UIKit
 
 /// Стартовый Контроллер предлагающий, сложить два числа или сыграть в "Угадай число"
-final class ViewController: UIViewController {
+final class GameViewController: UIViewController {
     
     var guessGame = GuessNumberGame()
     lazy var additionButton: UIButton = {
@@ -68,7 +68,7 @@ final class ViewController: UIViewController {
         guessNumberAlert()
     }
 }
-extension ViewController {
+extension GameViewController {
     func showAdditionAlert() {
         let alert = UIAlertController(title: "Могу сложить два числа", message: "введи числа", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
@@ -122,7 +122,7 @@ extension ViewController {
         self.view.addSubview(guessButton)
     }
 }
-extension ViewController: UITextFieldDelegate {
+extension GameViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text, let number = Int(text) else { return }
         guessGame.answer = number
