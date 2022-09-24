@@ -7,57 +7,64 @@
 
 import UIKit
 
+/// Стартовый Контроллер предлагающий, сложить два числа или сыграть в "Угадай число"
 final class ViewController: UIViewController {
     
     var guessGame = GuessNumberGame()
-    var enterNameAlert = UIAlertController(title: "Приветстую", message: "Введите имя", preferredStyle: .alert)
-    var additionButton = UIButton()
-    var guessButton = UIButton()
-    var myNameLabel = UILabel()
-    var resultLabel = UILabel()
+    lazy var additionButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 107, y: 350, width: 200, height: 50)
+        button.backgroundColor = .orange
+        button.setTitle("Сложение", for: .normal)
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(buttonAdditionAction), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var guessButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 107, y: 450, width: 200, height: 50)
+        button.setTitle("Угадай число", for: .normal)
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(guessNumberAction), for: .touchUpInside)
+        return button
+    }()
+    
+    var myNameLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 107, y: 300, width: 200, height: 50)
+        label.textColor = UIColor.red
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
+    var resultLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
+    
+    var enterNameAlert: UIAlertController = {
+        let alertController =  UIAlertController(title: "Приветстую", message: "Введите имя", preferredStyle: .alert)
+        alertController.addTextField()
+        
+        return alertController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        myNameLabel.frame = CGRect(x: 107, y: 300, width: 200, height: 50)
-        myNameLabel.textColor = UIColor.red
-        myNameLabel.numberOfLines = 0
-        myNameLabel.textAlignment = .center
-        
-        resultLabel.textAlignment = .center
-        
-        additionButton.frame = CGRect(x: 107, y: 350, width: 200, height: 50)
-        additionButton.backgroundColor = .orange
-        additionButton.setTitle("Сложение", for: .normal)
-        additionButton.layer.cornerRadius = 20
-        additionButton.addTarget(self, action: #selector(buttonAddition), for: .touchUpInside)
-        
-        guessButton.frame = CGRect(x: 107, y: 450, width: 200, height: 50)
-        guessButton.setTitle("Угадай число", for: .normal)
-        guessButton.backgroundColor = .blue
-        guessButton.layer.cornerRadius = 20
-        guessButton.addTarget(self, action: #selector(guessNumber), for: .touchUpInside)
-        
-        self.view.addSubview(myNameLabel)
-        self.view.addSubview(resultLabel)
-        self.view.addSubview(additionButton)
-        self.view.addSubview(guessButton)
+        addSubview()
     }
     override func viewDidAppear(_ animated: Bool) {
-        enterNameAlert.addTextField()
-        
-        let resultAction = UIAlertAction(title: "Ok", style: .default) { _ in
-            guard let myName =  self.enterNameAlert.textFields?.first?.text else { return }
-            self.myNameLabel.text = myName
-        }
-        
-        enterNameAlert.addAction(resultAction)
-        present(enterNameAlert, animated: true)
+        super.viewDidAppear(animated)
+        enterName()
     }
-    @objc func buttonAddition(sender: UIButton!) {
+    @objc func buttonAdditionAction(sender: UIButton!) {
         showAdditionAlert()
     }
-    @objc func guessNumber(sender: UIButton!) {
+    @objc func guessNumberAction(sender: UIButton!) {
         guessNumberAlert()
     }
 }
@@ -91,14 +98,13 @@ extension ViewController {
         }
         let resultAction = UIAlertAction(title: "Попробовать", style: .default) { _ in
             self.resultLabel.frame = CGRect(x: 107, y: 500, width: 200, height: 50)
-            if self.guessGame.isRight(answer: self.guessGame.answer) {
-                self.resultLabel.textColor = .green
-                self.resultLabel.text = "Верно я загадал \(self.guessGame.secret)"
-            } else {
+            guard self.guessGame.isRight(answer: self.guessGame.answer) else {
                 self.resultLabel.textColor = .red
                 self.resultLabel.text = "Не верно я загадал \(self.guessGame.secret)"
-                
+                return
             }
+            self.resultLabel.textColor = .green
+            self.resultLabel.text = "Верно я загадал \(self.guessGame.secret)"
         }
         let cancelAction = UIAlertAction(title: "Не сейчас", style: .cancel, handler: nil)
         
@@ -109,26 +115,25 @@ extension ViewController {
             self.guessGame.generate()
         }
     }
+    func addSubview() {
+        self.view.addSubview(myNameLabel)
+        self.view.addSubview(resultLabel)
+        self.view.addSubview(additionButton)
+        self.view.addSubview(guessButton)
+    }
 }
 extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text, let number = Int(text) else { return }
         guessGame.answer = number
     }
-}
-
-/// Класс для игры угадай число
-class GuessNumberGame {
-    var secret: Int
-    var answer: Int
-    init() {
-        secret = 0
-        answer = 0
-    }
-    func generate() {
-        secret = Int.random(in: 1...5)
-    }
-    func isRight(answer: Int) -> Bool {
-        secret == answer
+    
+    func enterName() {
+        let resultAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            guard let myName =  self.enterNameAlert.textFields?.first?.text else { return }
+            self.myNameLabel.text = myName
+        }
+        enterNameAlert.addAction(resultAction)
+        present(enterNameAlert, animated: true)
     }
 }
