@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		09135ED028DB551900D47CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09135ECF28DB551900D47CA6 /* AppDelegate.swift */; };
 		09135ED228DB551900D47CA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09135ED128DB551900D47CA6 /* SceneDelegate.swift */; };
-		09135ED428DB551900D47CA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09135ED328DB551900D47CA6 /* ViewController.swift */; };
+		09135ED428DB551900D47CA6 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09135ED328DB551900D47CA6 /* PlaylistViewController.swift */; };
 		09135ED728DB551900D47CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09135ED528DB551900D47CA6 /* Main.storyboard */; };
 		09135ED928DB551C00D47CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09135ED828DB551C00D47CA6 /* Assets.xcassets */; };
 		09135EDC28DB551C00D47CA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09135EDA28DB551C00D47CA6 /* LaunchScreen.storyboard */; };
+		09E4CFF828E0FBDD000C32FF /* Anacondaz - Не норм.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 09E4CFF628E0FBDC000C32FF /* Anacondaz - Не норм.mp3 */; };
+		09E4CFF928E0FBDD000C32FF /* Anacondaz - Два вопроса.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 09E4CFF728E0FBDD000C32FF /* Anacondaz - Два вопроса.mp3 */; };
+		09E93C3028E1887F00622F1F /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E93C2F28E1887F00622F1F /* PlayerViewController.swift */; };
+		09E93C3328E196F700622F1F /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E93C3228E196F700622F1F /* Song.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09135ECC28DB551900D47CA6 /* UIKitDZMain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZMain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09135ECF28DB551900D47CA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09135ED128DB551900D47CA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		09135ED328DB551900D47CA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		09135ED328DB551900D47CA6 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		09135ED628DB551900D47CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		09135ED828DB551C00D47CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09135EDB28DB551C00D47CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09135EDD28DB551C00D47CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09E4CFF628E0FBDC000C32FF /* Anacondaz - Не норм.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Anacondaz - Не норм.mp3"; sourceTree = "<group>"; };
+		09E4CFF728E0FBDD000C32FF /* Anacondaz - Два вопроса.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Anacondaz - Два вопроса.mp3"; sourceTree = "<group>"; };
+		09E93C2F28E1887F00622F1F /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		09E93C3228E196F700622F1F /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +66,41 @@
 			children = (
 				09135ECF28DB551900D47CA6 /* AppDelegate.swift */,
 				09135ED128DB551900D47CA6 /* SceneDelegate.swift */,
-				09135ED328DB551900D47CA6 /* ViewController.swift */,
+				09E93C3128E196E000622F1F /* Model */,
+				09E93C2E28E1884B00622F1F /* ViewController */,
 				09135ED528DB551900D47CA6 /* Main.storyboard */,
+				09E4CFF528E0FBAE000C32FF /* Music */,
 				09135ED828DB551C00D47CA6 /* Assets.xcassets */,
 				09135EDA28DB551C00D47CA6 /* LaunchScreen.storyboard */,
 				09135EDD28DB551C00D47CA6 /* Info.plist */,
 			);
 			path = UIKitDZMain;
+			sourceTree = "<group>";
+		};
+		09E4CFF528E0FBAE000C32FF /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				09E4CFF628E0FBDC000C32FF /* Anacondaz - Не норм.mp3 */,
+				09E4CFF728E0FBDD000C32FF /* Anacondaz - Два вопроса.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		09E93C2E28E1884B00622F1F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				09135ED328DB551900D47CA6 /* PlaylistViewController.swift */,
+				09E93C2F28E1887F00622F1F /* PlayerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		09E93C3128E196E000622F1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09E93C3228E196F700622F1F /* Song.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,7 +164,9 @@
 			files = (
 				09135EDC28DB551C00D47CA6 /* LaunchScreen.storyboard in Resources */,
 				09135ED928DB551C00D47CA6 /* Assets.xcassets in Resources */,
+				09E4CFF828E0FBDD000C32FF /* Anacondaz - Не норм.mp3 in Resources */,
 				09135ED728DB551900D47CA6 /* Main.storyboard in Resources */,
+				09E4CFF928E0FBDD000C32FF /* Anacondaz - Два вопроса.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,9 +198,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09135ED428DB551900D47CA6 /* ViewController.swift in Sources */,
+				09135ED428DB551900D47CA6 /* PlaylistViewController.swift in Sources */,
+				09E93C3028E1887F00622F1F /* PlayerViewController.swift in Sources */,
 				09135ED028DB551900D47CA6 /* AppDelegate.swift in Sources */,
 				09135ED228DB551900D47CA6 /* SceneDelegate.swift in Sources */,
+				09E93C3328E196F700622F1F /* Song.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
