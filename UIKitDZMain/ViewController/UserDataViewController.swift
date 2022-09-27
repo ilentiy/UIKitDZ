@@ -125,7 +125,7 @@ class UserDataViewController: UIViewController {
         let textField = UITextField()
         textField.frame = CGRect(x: 30, y: 740, width: 350, height: 30)
         textField.placeholder = "Введите  instagram"
-        textField.addTarget(self, action: #selector(createInstagramAlertController), for: .touchUpInside)
+        textField.addTarget(self, action: #selector(instagramAlertController), for: .allEditingEvents)
         textField.addBottomBorder()
         return textField
     }()
@@ -199,6 +199,9 @@ class UserDataViewController: UIViewController {
     func createDatePicker() {
         dateTextField.inputView = datePicker
         dateTextField.inputAccessoryView = createToolBar()
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.locale = .init(identifier: "Russian")
+        datePicker.preferredDatePickerStyle = .wheels
     }
     
     func createAgePicker() {
@@ -213,19 +216,20 @@ class UserDataViewController: UIViewController {
         genderTextField.inputView = genderPicker
     }
     
-    @objc func createInstagramAlertController() {
+    @objc func instagramAlertController() {
         lazy var alertController: UIAlertController = {
             let alert = UIAlertController(title: "Instagram", message: "Введите свой instagram", preferredStyle: .alert)
             let result = UIAlertAction(title: "ОК", style: .default) { _ in
                 guard let text = alert.textFields?.first?.text else { return }
-                self.instagramLabel.text = text
+                self.instagramTextField.text = text
             }
             alert.addTextField()
             alert.textFields?.first?.placeholder = " например ilentiy"
             alert.addAction(result)
-            present(alert, animated: true)
+            
             return alert
         }()
+        present(alertController, animated: true)
     }
     
     @objc func doneButtonAction() {
