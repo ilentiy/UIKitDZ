@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; configuration.title = "Поделиться"; ObjectID = "jF5-Ta-2nJ"; */
+"jF5-Ta-2nJ.configuration.title" = "Поделиться";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jF5-Ta-2nJ"; */
+"jF5-Ta-2nJ.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "поделись текстом"; ObjectID = "vZm-cy-uW3"; */
+"vZm-cy-uW3.placeholder" = "поделись текстом";
