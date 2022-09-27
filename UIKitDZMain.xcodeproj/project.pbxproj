@@ -13,6 +13,9 @@
 		09135ED728DB551900D47CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09135ED528DB551900D47CA6 /* Main.storyboard */; };
 		09135ED928DB551C00D47CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09135ED828DB551C00D47CA6 /* Assets.xcassets */; };
 		09135EDC28DB551C00D47CA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09135EDA28DB551C00D47CA6 /* LaunchScreen.storyboard */; };
+		09E9E92228E2C857003FAE07 /* обувь2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 09E9E91F28E2C857003FAE07 /* обувь2.jpeg */; };
+		09E9E92328E2C857003FAE07 /* обувь3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 09E9E92028E2C857003FAE07 /* обувь3.jpeg */; };
+		09E9E92528E2CA88003FAE07 /* обувь1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 09E9E92428E2CA88003FAE07 /* обувь1.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		09135ED828DB551C00D47CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09135EDB28DB551C00D47CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09135EDD28DB551C00D47CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09E9E91F28E2C857003FAE07 /* обувь2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "обувь2.jpeg"; sourceTree = "<group>"; };
+		09E9E92028E2C857003FAE07 /* обувь3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "обувь3.jpeg"; sourceTree = "<group>"; };
+		09E9E92428E2CA88003FAE07 /* обувь1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "обувь1.jpeg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				09135ED828DB551C00D47CA6 /* Assets.xcassets */,
 				09135EDA28DB551C00D47CA6 /* LaunchScreen.storyboard */,
 				09135EDD28DB551C00D47CA6 /* Info.plist */,
+				09E9E92428E2CA88003FAE07 /* обувь1.jpeg */,
+				09E9E91F28E2C857003FAE07 /* обувь2.jpeg */,
+				09E9E92028E2C857003FAE07 /* обувь3.jpeg */,
 			);
 			path = UIKitDZMain;
 			sourceTree = "<group>";
@@ -126,8 +135,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E9E92528E2CA88003FAE07 /* обувь1.jpeg in Resources */,
 				09135EDC28DB551C00D47CA6 /* LaunchScreen.storyboard in Resources */,
+				09E9E92328E2C857003FAE07 /* обувь3.jpeg in Resources */,
 				09135ED928DB551C00D47CA6 /* Assets.xcassets in Resources */,
+				09E9E92228E2C857003FAE07 /* обувь2.jpeg in Resources */,
 				09135ED728DB551900D47CA6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
