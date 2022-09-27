@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Повторение урока
 final class ViewController: UIViewController {
 
     var segmentControll = UISegmentedControl()
