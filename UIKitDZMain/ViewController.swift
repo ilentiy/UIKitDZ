@@ -7,10 +7,30 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
-
+/// Авторизация пользователя
+final class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var hidePassButton: UIButton!
+    @IBOutlet weak var passTextField: UITextField!
+    
+    var isHidePass = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        addTarget()
+    }
+    
+    @IBAction func hidePassAction(_ sender: Any) {
+        if isHidePass {
+            isHidePass = false
+            passTextField.isSecureTextEntry = false
+        } else {
+            isHidePass = true
+            passTextField.isSecureTextEntry = true
+        }
+    }
+    
+    func addTarget() {
+        hidePassButton.addTarget(self, action: #selector(hidePassAction), for: .touchUpInside)
     }
 }
