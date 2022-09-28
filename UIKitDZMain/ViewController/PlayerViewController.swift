@@ -13,10 +13,6 @@ import AVFoundation
 /// Плеер
 class PlayerViewController: UIViewController {
     
-    var song = Song()
-    
-    var player = AVAudioPlayer()
-    
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
@@ -26,6 +22,10 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var lastsLabel: UILabel!
     @IBOutlet weak var leftLabel: UILabel!
+        
+    var player = AVAudioPlayer()
+    
+    var song = Song()
     
     override func viewDidLoad() {
         super.viewDidLoad()

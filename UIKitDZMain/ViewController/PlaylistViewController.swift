@@ -44,7 +44,5 @@ final class PlaylistViewController: UIViewController {
         playerViewController.song = song
         playerViewController.modalPresentationStyle = .formSheet
         present(playerViewController, animated: true)
-        
     }
-    
 }
