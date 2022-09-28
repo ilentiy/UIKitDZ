@@ -79,8 +79,6 @@ final class RegistrationViewController: UIViewController {
         return button
     }()
     
-    var isHidePassword = true
-    
     lazy var signInButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 30, y: 600, width: 350, height: 60)
@@ -109,6 +107,8 @@ final class RegistrationViewController: UIViewController {
         return switcher
     }()
     
+    var isHidePassword = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubview()
@@ -127,11 +127,13 @@ final class RegistrationViewController: UIViewController {
         view.addSubview(signInButton)
         view.backgroundColor = .white
     }
+    
     @objc func signInButtonAction(sender: UIButton!) {
         let birthdayViewController = BirthdayViewController()
         self.navigationController?.pushViewController(birthdayViewController, animated: true)
         
     }
+    
     @objc func showPasswordAction(sender: UIButton!) {
         if isHidePassword {
             isHidePassword = false
@@ -142,10 +144,10 @@ final class RegistrationViewController: UIViewController {
             passwordTextField.isSecureTextEntry = true
             showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         }
-        
     }
 }
 
+/// Добавляет подчеркивание Текстфилду
 extension UITextField {
     func addBottomBorder() {
         let bottomLine = CALayer()

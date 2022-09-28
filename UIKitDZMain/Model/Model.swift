@@ -7,7 +7,7 @@
 
 import Foundation
 
-///  
+///   информация для добавления нового пользователя
 struct UserData {
     var gender = ["Парень", "Девушка"]
     var ages: [Int] = {

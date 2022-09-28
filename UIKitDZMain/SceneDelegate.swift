@@ -18,7 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootViewController = RegistrationViewController()
         let navigationViewController = UINavigationController(rootViewController: rootViewController)
         navigationViewController.modalPresentationStyle = .fullScreen
-        
         window?.rootViewController = navigationViewController
         window?.makeKeyAndVisible()
     }

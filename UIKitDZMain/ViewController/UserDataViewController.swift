@@ -10,7 +10,9 @@ import UIKit
 /// Заполняем информацию о человеке
 class UserDataViewController: UIViewController {
     
-    var userData = UserData()
+    var agePicker = UIPickerView()
+    
+    var genderPicker = UIPickerView()
     
     var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
@@ -18,10 +20,6 @@ class UserDataViewController: UIViewController {
         datePicker.datePickerMode = .dateAndTime
         return datePicker
     }()
-    
-    var agePicker = UIPickerView()
-    
-    var genderPicker = UIPickerView()
     
     var userPhotoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,6 +37,7 @@ class UserDataViewController: UIViewController {
         button.backgroundColor = .clear
         return button
     }()
+    
     var nameLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 30, y: 300, width: 150, height: 30)
@@ -130,6 +129,8 @@ class UserDataViewController: UIViewController {
         return textField
     }()
     
+    var userData = UserData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createNavigationBar()
@@ -182,11 +183,13 @@ class UserDataViewController: UIViewController {
     }
     
     @objc func cancelButtonAction() {
-        
+        dismiss(animated: true)
     }
+    
     @objc func addButtonAction() {
-        
+        dismiss(animated: true)
     }
+    
     func createToolBar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -226,9 +229,9 @@ class UserDataViewController: UIViewController {
             alert.addTextField()
             alert.textFields?.first?.placeholder = " например ilentiy"
             alert.addAction(result)
-            
             return alert
         }()
+        
         present(alertController, animated: true)
     }
     
@@ -236,13 +239,12 @@ class UserDataViewController: UIViewController {
         let dateFormat = DateFormatter()
         dateFormat.dateStyle = .medium
         dateFormat.timeStyle = .none
-        
-        self.dateTextField.text = dateFormat.string(from: datePicker.date)
-        
-        self.view.endEditing(true)
+        dateTextField.text = dateFormat.string(from: datePicker.date)
+        view.endEditing(true)
     }
 }
 
+/// UIPickerViewDelegate
 extension UserDataViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var result: String = ""
@@ -258,10 +260,12 @@ extension UserDataViewController: UIPickerViewDelegate {
     }
 }
 
+/// UIPickerViewDataSource
 extension UserDataViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
         case genderPicker:
@@ -272,6 +276,7 @@ extension UserDataViewController: UIPickerViewDataSource {
             return 0
         }
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
         case genderPicker:
@@ -283,6 +288,5 @@ extension UserDataViewController: UIPickerViewDataSource {
         default:
             return
         }
-        
     }
 }

@@ -13,12 +13,10 @@ class BirthdayViewController: UIViewController {
     var jeremyView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        
         view.frame = CGRect(x: 0, y: 120, width: 410, height: 80)
         
         var userPhotoImageView: UIImageView = {
             let imageView = UIImageView()
-            
             imageView.frame = CGRect(x: 5, y: 10, width: 70, height: 70)
             imageView.image = UIImage(systemName: "person.crop.circle.fill")
             imageView.tintColor = .gray
@@ -27,35 +25,28 @@ class BirthdayViewController: UIViewController {
         
         var nameLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 75, y: 0, width: 120, height: 50)
             label.textAlignment = .left
             label.font = UIFont(name: "Helvetica-Bold", size: 23)
             label.textColor = .black
-            
             label.text = "Jeremy"
             return label
         }()
         
         var daysBeforeBirthLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 325, y: 0, width: 100, height: 50)
             label.font = UIFont(name: "Helvetica", size: 21)
             label.textColor = .gray
-            
             label.text = "18 дней"
             return label
-            
         }()
         
         var birthdayInfoLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 75, y: 35, width: 300, height: 50)
             label.font = UIFont(name: "Helvetica", size: 15)
             label.textColor = .gray
-            
             label.text = "10 марта, в среду исполнится 25 лет "
             return label
         }()
@@ -83,34 +74,28 @@ class BirthdayViewController: UIViewController {
         
         var nameLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 75, y: 0, width: 120, height: 50)
             label.textAlignment = .left
             label.font = UIFont(name: "Helvetica-Bold", size: 23)
             label.textColor = .black
-            
             label.text = "Maria Lui"
             return label
         }()
         
         var daysBeforeBirthLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 325, y: 0, width: 100, height: 50)
             label.font = UIFont(name: "Helvetica", size: 21)
             label.textColor = .gray
-            
             label.text = "28 дней"
             return label
         }()
         
         var birthdayInfoLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 75, y: 35, width: 300, height: 50)
             label.font = UIFont(name: "Helvetica", size: 15)
             label.textColor = .gray
-            
             label.text = "30 марта, в четверг исполнится 20 лет "
             return label
         }()
@@ -127,7 +112,6 @@ class BirthdayViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .white
         view.frame = CGRect(x: 0, y: 300, width: 400, height: 80)
-        
         var userPhotoImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 5, y: 10, width: 70, height: 70)
@@ -138,34 +122,28 @@ class BirthdayViewController: UIViewController {
         
         var nameLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 75, y: 0, width: 120, height: 50)
             label.textAlignment = .left
             label.font = UIFont(name: "Helvetica-Bold", size: 23)
             label.textColor = .black
-            
             label.text = "Jony Stark"
             return label
         }()
         
         var daysBeforeBirthLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 325, y: 0, width: 100, height: 50)
             label.font = UIFont(name: "Helvetica", size: 21)
             label.textColor = .gray
-            
             label.text = "53 дней"
             return label
         }()
         
         var birthdayInfoLabel: UILabel = {
             let label = UILabel()
-            
             label.frame = CGRect(x: 75, y: 35, width: 300, height: 50)
             label.font = UIFont(name: "Helvetica", size: 15)
             label.textColor = .gray
-            
             label.text = "20 апреля, в субботу исполнится 25 лет "
             return label
         }()
@@ -187,10 +165,10 @@ class BirthdayViewController: UIViewController {
         title = "Birthday"
         view.backgroundColor = .white
         let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(newUserAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(newUserAction))
         view.addSubview(navigationBar)
         view.addSubview(jeremyView)
         view.addSubview(mariaView)
@@ -199,10 +177,11 @@ class BirthdayViewController: UIViewController {
     
     @objc func newUserAction(sender: UIButton!) {
         let userDataViewController = UserDataViewController()
-        // xself.navigationController?.modalPresentationStyle = .pageSheet
-        self.navigationController?.present(userDataViewController, animated: true)
+        navigationController?.present(userDataViewController, animated: true)
     }
 }
+
+/// Добаляет подчеркивание вью
 extension UIView {
     func addBottomBorderView() {
         let bottomLine = CALayer()
