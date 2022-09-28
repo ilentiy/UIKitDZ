@@ -10,20 +10,21 @@ import UIKit
 /// Корзина покупателя
 class CartViewController: UIViewController {
     
+    var segmentControl = UISegmentedControl()
     var sizePicker = UIPickerView()
+    var shoes = Shoes()
     let sizeArticle = ["US", "EUR"]
     let sizeUS = ["12", "12.5", "13", "14"]
     let sizeEUR = ["45.5", "46", "46.5", "48"]
-    var segmentControl = UISegmentedControl()
     var printTarget = ""
-    var shoes = Shoes()
     
     lazy var shoesImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.frame = CGRect(x: 20, y: 75, width: 375, height: 375)
-        imageView.image = UIImage(named: self.shoes.image)
+        imageView.image = UIImage(named: shoes.image)
         return imageView
     }()
+    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 20, y: 15, width: 375, height: 50)
@@ -31,7 +32,7 @@ class CartViewController: UIViewController {
         label.font = UIFont(name: "Helvetica-Bold", size: 25)
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.text = self.shoes.name
+        label.text = shoes.name
         return label
     }()
     
@@ -42,7 +43,7 @@ class CartViewController: UIViewController {
         label.font = UIFont(name: "Helvetica-Bold", size: 30)
         label.textAlignment = .right
         label.numberOfLines = 0
-        label.text = self.shoes.price
+        label.text = shoes.price
         return label
     }()
     
@@ -82,10 +83,8 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupSegmentControl()
-        createSizePicker()
-        
     }
+    
     func setupUI() {
         view.backgroundColor = .white
         view.addSubview(shoesImageView)
@@ -94,20 +93,23 @@ class CartViewController: UIViewController {
         view.addSubview(sizeLabel)
         view.addSubview(sizeTextField)
         view.addSubview(buyButton)
+        setupSegmentControl()
+        createSizePicker()
     }
     
     func createSizePicker() {
+        sizePicker.sizeToFit()
         sizePicker.dataSource = self
         sizePicker.delegate = self
         sizeTextField.inputView = sizePicker
     }
+    
     func setupSegmentControl() {
         segmentControl = UISegmentedControl(items: sizeArticle)
         segmentControl.frame = CGRect(x: 100, y: 500, width: 80, height: 40)
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(selegtedValue), for: .valueChanged)
         printTarget = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex) ?? ""
-        
         view.addSubview(segmentControl)
     }
     
@@ -116,7 +118,6 @@ class CartViewController: UIViewController {
             let segmentIndex = target.selectedSegmentIndex
             printTarget = target.titleForSegment(at: segmentIndex) ?? ""
         }
-        
     }
     
     @objc func confirmBuyAction() {
@@ -133,6 +134,8 @@ class CartViewController: UIViewController {
         present(alert, animated: true)
     }
 }
+
+/// UIPickerViewDataSource
 extension CartViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -146,11 +149,14 @@ extension CartViewController: UIPickerViewDataSource {
         }
     }
 }
+
+/// UIPickerViewDelegate
 extension CartViewController: UIPickerViewDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch printTarget {
         case "US":
@@ -161,6 +167,7 @@ extension CartViewController: UIPickerViewDelegate {
             return 0
         }
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch printTarget {
         case "US":
@@ -172,6 +179,5 @@ extension CartViewController: UIPickerViewDelegate {
         default:
             return
         }
-        
     }
 }

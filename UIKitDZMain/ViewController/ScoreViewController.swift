@@ -22,6 +22,7 @@ class ScoreViewController: UIViewController {
             let button = UIButton()
             button.frame = CGRect(x: 0, y: 0, width: 190, height: 285)
             button.backgroundColor = .clear
+            button.tag = 0
             button.addTarget(self, action: #selector(shoesOneACtion), for: .touchUpInside)
             return button
         }()
@@ -44,6 +45,7 @@ class ScoreViewController: UIViewController {
             label.text = "New Balance 574 Evergreen"
             return label
         }()
+        
         var costLabel: UILabel = {
             let label = UILabel()
             label.frame = CGRect(x: 0, y: 225, width: 200, height: 40)
@@ -74,7 +76,8 @@ class ScoreViewController: UIViewController {
             let button = UIButton()
             button.frame = CGRect(x: 0, y: 0, width: 190, height: 285)
             button.backgroundColor = .clear
-            button.addTarget(self, action: #selector(shoesTwoACtion), for: .touchUpInside)
+            button.tag = 1
+            button.addTarget(self, action: #selector(shoesOneACtion), for: .touchUpInside)
             return button
         }()
         
@@ -96,6 +99,7 @@ class ScoreViewController: UIViewController {
             label.text = "New Balance Fresh Foam Hierro v6 GTX"
             return label
         }()
+        
         var costLabel: UILabel = {
             let label = UILabel()
             label.frame = CGRect(x: 0, y: 225, width: 200, height: 40)
@@ -111,7 +115,6 @@ class ScoreViewController: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(costLabel)
         view.addSubview(button)
-        
         return view
     }()
     
@@ -127,7 +130,8 @@ class ScoreViewController: UIViewController {
             let button = UIButton()
             button.frame = CGRect(x: 0, y: 0, width: 190, height: 285)
             button.backgroundColor = .clear
-            button.addTarget(self, action: #selector(shoesThreeACtion), for: .touchUpInside)
+            button.addTarget(self, action: #selector(shoesOneACtion), for: .touchUpInside)
+            button.tag = 2
             return button
         }()
         
@@ -149,6 +153,7 @@ class ScoreViewController: UIViewController {
             label.text = "New Balance 554 Black"
             return label
         }()
+        
         var costLabel: UILabel = {
             let label = UILabel()
             label.frame = CGRect(x: 0, y: 225, width: 200, height: 40)
@@ -164,9 +169,9 @@ class ScoreViewController: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(costLabel)
         view.addSubview(button)
-        
         return view
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -177,34 +182,28 @@ class ScoreViewController: UIViewController {
         view.addSubview(shoesOneView)
         view.addSubview(shoesTwoView)
         view.addSubview(shoesThreeView)
-        
     }
-    @objc func shoesOneACtion() {
+    
+    @objc func shoesOneACtion(sender: UIButton) {
         let shoes = Shoes()
-        shoes.name = "New Balance 574 Evergreen"
-        shoes.image = "shoes1"
-        shoes.price = "20.000 RUB"
         let itemCard = CartViewController()
+        switch sender.tag {
+        case 0:
+            shoes.name = "New Balance 574 Evergreen"
+            shoes.image = "shoes1"
+            shoes.price = "20.000 RUB"
+        case 1:
+            shoes.name = "New Balance Fresh Foam Hierro v6 GTX"
+            shoes.image = "shoes2"
+            shoes.price = "24.000 RUB"
+        case 2:
+            shoes.name = "New Balance 554 Black"
+            shoes.image = "shoes3"
+            shoes.price = "18.000 RUB"
+        default:
+            return
+        }
         itemCard.shoes = shoes
-        self.navigationController?.present(itemCard, animated: true)
-
-    }
-    @objc func shoesTwoACtion() {
-        let shoes = Shoes()
-        shoes.name = "New Balance Fresh Foam Hierro v6 GTX"
-        shoes.image = "shoes2"
-        shoes.price = "24.000 RUB"
-        let itemCard = CartViewController()
-        itemCard.shoes = shoes
-        self.navigationController?.present(itemCard, animated: true)
-    }
-    @objc func shoesThreeACtion() {
-        let shoes = Shoes()
-        shoes.name = "New Balance 554 Black"
-        shoes.image = "shoes3"
-        shoes.price = "18.000 RUB"
-        let itemCard = CartViewController()
-        itemCard.shoes = shoes
-        self.navigationController?.present(itemCard, animated: true)
+        navigationController?.present(itemCard, animated: true)
     }
 }

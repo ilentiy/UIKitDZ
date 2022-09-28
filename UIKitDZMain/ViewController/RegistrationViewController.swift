@@ -26,7 +26,7 @@ class RegistrationViewController: UIViewController {
         label.textColor = .black
         label.text = "SneakerS"
         label.numberOfLines = 0
-
+        
         return label
     }()
     
@@ -66,8 +66,6 @@ class RegistrationViewController: UIViewController {
         return button
     }()
     
-    var isHidePassword = true
-    
     lazy var signInButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 30, y: 600, width: 350, height: 60)
@@ -96,6 +94,8 @@ class RegistrationViewController: UIViewController {
         return switcher
     }()
     
+    var isHidePassword = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubview()
@@ -112,13 +112,13 @@ class RegistrationViewController: UIViewController {
         view.addSubview(faceIDLabel)
         view.addSubview(faceIDSwitch)
         view.addSubview(signInButton)
-        
     }
+    
     @objc func signInButtonAction(sender: UIButton!) {
         let scoreViewController = ScoreViewController()
-        self.navigationController?.pushViewController(scoreViewController, animated: true)
-        
+        navigationController?.pushViewController(scoreViewController, animated: true)
     }
+    
     @objc func showPasswordAction(sender: UIButton!) {
         if isHidePassword {
             isHidePassword = false
@@ -129,10 +129,10 @@ class RegistrationViewController: UIViewController {
             passwordTextField.isSecureTextEntry = true
             showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         }
-        
     }
 }
 
+/// Расширение позволяет с помощью функции лобавлять подчеркивание
 extension UITextField {
     func addBottomBorder() {
         let bottomLine = CALayer()
