@@ -8,7 +8,7 @@
 import UIKit
 
 /// Авторизация пользователя
-final class ViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     @IBOutlet weak var hidePassButton: UIButton!
     @IBOutlet weak var passTextField: UITextField!
@@ -19,6 +19,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         addTarget()
     }
+    
     @IBAction func hidePassAction(_ sender: Any) {
         if isHidePass {
             isHidePass = false
@@ -28,6 +29,7 @@ final class ViewController: UIViewController {
             passTextField.isSecureTextEntry = true
         }
     }
+    
     func addTarget() {
         hidePassButton.addTarget(self, action: #selector(hidePassAction), for: .touchUpInside)
     }
