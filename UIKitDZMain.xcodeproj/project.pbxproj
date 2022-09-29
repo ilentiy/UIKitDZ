@@ -13,6 +13,14 @@
 		09135ED728DB551900D47CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09135ED528DB551900D47CA6 /* Main.storyboard */; };
 		09135ED928DB551C00D47CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09135ED828DB551C00D47CA6 /* Assets.xcassets */; };
 		09135EDC28DB551C00D47CA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09135EDA28DB551C00D47CA6 /* LaunchScreen.storyboard */; };
+		09E9E92228E2C857003FAE07 /* обувь2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 09E9E91F28E2C857003FAE07 /* обувь2.jpeg */; };
+		09E9E92328E2C857003FAE07 /* обувь3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 09E9E92028E2C857003FAE07 /* обувь3.jpeg */; };
+		09E9E92528E2CA88003FAE07 /* обувь1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 09E9E92428E2CA88003FAE07 /* обувь1.jpeg */; };
+		09E9E92928E2D34B003FAE07 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E92828E2D34B003FAE07 /* RegistrationViewController.swift */; };
+		09E9E92B28E2D38C003FAE07 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E92A28E2D38C003FAE07 /* ScoreViewController.swift */; };
+		09E9E92D28E2D3D0003FAE07 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E92C28E2D3D0003FAE07 /* CartViewController.swift */; };
+		09E9E92F28E2D4A9003FAE07 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9E92E28E2D4A9003FAE07 /* Item.swift */; };
+		09E9E93228E2E4A4003FAE07 /* DonGraffiti.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09E9E93128E2E4A4003FAE07 /* DonGraffiti.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		09135ED828DB551C00D47CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09135EDB28DB551C00D47CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09135EDD28DB551C00D47CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09E9E91F28E2C857003FAE07 /* обувь2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "обувь2.jpeg"; sourceTree = "<group>"; };
+		09E9E92028E2C857003FAE07 /* обувь3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "обувь3.jpeg"; sourceTree = "<group>"; };
+		09E9E92428E2CA88003FAE07 /* обувь1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "обувь1.jpeg"; sourceTree = "<group>"; };
+		09E9E92828E2D34B003FAE07 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		09E9E92A28E2D38C003FAE07 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		09E9E92C28E2D3D0003FAE07 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		09E9E92E28E2D4A9003FAE07 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		09E9E93128E2E4A4003FAE07 /* DonGraffiti.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DonGraffiti.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +75,44 @@
 				09135ECF28DB551900D47CA6 /* AppDelegate.swift */,
 				09135ED128DB551900D47CA6 /* SceneDelegate.swift */,
 				09135ED328DB551900D47CA6 /* ViewController.swift */,
+				09E9E92728E2CF43003FAE07 /* ViewController */,
+				09E9E92628E2CF3D003FAE07 /* Model */,
 				09135ED528DB551900D47CA6 /* Main.storyboard */,
 				09135ED828DB551C00D47CA6 /* Assets.xcassets */,
 				09135EDA28DB551C00D47CA6 /* LaunchScreen.storyboard */,
 				09135EDD28DB551C00D47CA6 /* Info.plist */,
+				09E9E93028E2E481003FAE07 /* Fonts */,
+				09E9E92428E2CA88003FAE07 /* обувь1.jpeg */,
+				09E9E91F28E2C857003FAE07 /* обувь2.jpeg */,
+				09E9E92028E2C857003FAE07 /* обувь3.jpeg */,
 			);
 			path = UIKitDZMain;
+			sourceTree = "<group>";
+		};
+		09E9E92628E2CF3D003FAE07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09E9E92E28E2D4A9003FAE07 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09E9E92728E2CF43003FAE07 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				09E9E92828E2D34B003FAE07 /* RegistrationViewController.swift */,
+				09E9E92A28E2D38C003FAE07 /* ScoreViewController.swift */,
+				09E9E92C28E2D3D0003FAE07 /* CartViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		09E9E93028E2E481003FAE07 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				09E9E93128E2E4A4003FAE07 /* DonGraffiti.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +174,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E9E92528E2CA88003FAE07 /* обувь1.jpeg in Resources */,
 				09135EDC28DB551C00D47CA6 /* LaunchScreen.storyboard in Resources */,
+				09E9E92328E2C857003FAE07 /* обувь3.jpeg in Resources */,
 				09135ED928DB551C00D47CA6 /* Assets.xcassets in Resources */,
+				09E9E93228E2E4A4003FAE07 /* DonGraffiti.otf in Resources */,
+				09E9E92228E2C857003FAE07 /* обувь2.jpeg in Resources */,
 				09135ED728DB551900D47CA6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +214,10 @@
 			files = (
 				09135ED428DB551900D47CA6 /* ViewController.swift in Sources */,
 				09135ED028DB551900D47CA6 /* AppDelegate.swift in Sources */,
+				09E9E92B28E2D38C003FAE07 /* ScoreViewController.swift in Sources */,
+				09E9E92928E2D34B003FAE07 /* RegistrationViewController.swift in Sources */,
+				09E9E92F28E2D4A9003FAE07 /* Item.swift in Sources */,
+				09E9E92D28E2D3D0003FAE07 /* CartViewController.swift in Sources */,
 				09135ED228DB551900D47CA6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -294,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
