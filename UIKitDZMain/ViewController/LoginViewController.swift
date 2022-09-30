@@ -53,6 +53,7 @@ final class LoginViewController: UIViewController {
         textField.layer.borderColor = UIColor.orange.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 15
+        textField.isSecureTextEntry = true
         textField.placeholder = "Введите пароль"
         return textField
     }()
