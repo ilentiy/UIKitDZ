@@ -8,7 +8,7 @@
 import UIKit
 
 /// протокол перехода на rootViewController
-protocol GoToRootController: AnyObject {
+protocol GoToRootDelegate: AnyObject {
     func goToRootController()
 }
 
@@ -182,8 +182,8 @@ final class IngredientViewController: UIViewController {
     }
 }
 
-/// GoToRootControllet
-extension IngredientViewController: GoToRootController {
+/// GoToRootDelegate
+extension IngredientViewController: GoToRootDelegate {
     func goToRootController() {
         if let navigationController = self.presentingViewController as? UINavigationController {
             self.view.isHidden = true

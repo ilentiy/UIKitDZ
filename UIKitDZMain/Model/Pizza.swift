@@ -15,5 +15,5 @@ struct Pizza {
     var proteins = ""
     var fats = ""
     var carbohydrates = ""
-    var composition: [String] = []
+    var compositions: [String] = []
 }

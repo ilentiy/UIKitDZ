@@ -61,7 +61,7 @@ final class PaymentViewController: UIViewController {
         return switcher
     }()
     
-    weak var delegate: GoToRootController?
+    weak var delegate: GoToRootDelegate?
     
     var order = ""
     

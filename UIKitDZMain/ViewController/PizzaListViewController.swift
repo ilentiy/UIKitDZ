@@ -10,14 +10,14 @@ import UIKit
 /// Список доступных пицц
 final class PizzaListViewController: UIViewController {
     
-    var pizza: [Pizza] = [
+    var pizzas: [Pizza] = [
         Pizza(name: "Пепперони",
               imageName: "пепперони",
               calories: "1835",
               proteins: "45",
               fats: "76",
               carbohydrates: "350",
-              composition: [
+              compositions: [
                 "Вода",
                 "Мука",
                 "Томатный соус",
@@ -32,7 +32,7 @@ final class PizzaListViewController: UIViewController {
               proteins: "70",
               fats: "120",
               carbohydrates: "300",
-              composition: [
+              compositions: [
                 "Вода",
                 "Мука",
                 "Томатный соус",
@@ -121,7 +121,7 @@ final class PizzaListViewController: UIViewController {
     
     @objc private func addPizzaAction(button: UIButton) {
         let ingredientViewController = IngredientViewController()
-        ingredientViewController.pizza = pizza[button.tag]
+        ingredientViewController.pizza = pizzas[button.tag]
         navigationController?.modalPresentationStyle = .formSheet
         navigationController?.present(ingredientViewController, animated: true)
     }

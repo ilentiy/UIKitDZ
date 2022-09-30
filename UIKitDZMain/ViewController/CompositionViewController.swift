@@ -8,14 +8,14 @@
 import UIKit
 
 /// Калорийность и состав
-class CompositionViewController: UIViewController {
+final class CompositionViewController: UIViewController {
     
     var pizza = Pizza()
     
     private lazy var compositionLabel: UILabel = {
         var text = "Состав:\n"
-        for item in 0..<pizza.composition.count {
-            text += "\(item + 1). \(pizza.composition[item])\n"
+        for item in 0..<pizza.compositions.count {
+            text += "\(item + 1). \(pizza.compositions[item])\n"
         }
         let label = UILabel()
         label.frame = CGRect(x: 40, y: 200, width: view.frame.width, height: 300)
