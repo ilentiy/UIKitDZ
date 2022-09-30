@@ -10,6 +10,8 @@ import UIKit
 /// Калорийность и состав
 class CompositionViewController: UIViewController {
     
+    var pizza = Pizza()
+    
     private lazy var compositionLabel: UILabel = {
         var text = "Состав:\n"
         for item in 0..<pizza.composition.count {
@@ -45,9 +47,7 @@ class CompositionViewController: UIViewController {
         button.addTarget(self, action: #selector(okButtonAction), for: .touchUpInside)
         return button
     }()
-    
-    var pizza = Pizza()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

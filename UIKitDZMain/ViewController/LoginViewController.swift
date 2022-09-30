@@ -10,14 +10,7 @@ import UIKit
 /// Авторизация
 final class LoginViewController: UIViewController {
     
-    lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.frame = CGRect(x: 0, y: 150, width: 150, height: 150)
-        imageView.center.x = view.center.x
-        imageView.image = UIImage(named: "logo")
-        return imageView
-    }()
-    var phoneLabel: UILabel = {
+    private var phoneLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 25, y: 300, width: 200, height: 50)
         label.textColor = .orange
@@ -26,7 +19,7 @@ final class LoginViewController: UIViewController {
         return label
     }()
     
-    var passwordLabel: UILabel = {
+    private var passwordLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 25, y: 400, width: 200, height: 50)
         label.font = UIFont(name: "Helvetica-Bold", size: 20)
@@ -35,7 +28,7 @@ final class LoginViewController: UIViewController {
         return label
     }()
     
-    var phoneTextField: UITextField = {
+    private var phoneTextField: UITextField = {
         let textField = UITextField()
         textField.frame = CGRect(x: 25, y: 350, width: 375, height: 40)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: textField.frame.height))
@@ -47,7 +40,7 @@ final class LoginViewController: UIViewController {
         return textField
     }()
     
-    var passwordTextField: UITextField = {
+    private var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.frame = CGRect(x: 25, y: 450, width: 375, height: 40)
         textField.layer.borderColor = UIColor.orange.cgColor
@@ -58,7 +51,15 @@ final class LoginViewController: UIViewController {
         return textField
     }()
     
-    lazy var signInButton: UIButton = {
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.frame = CGRect(x: 0, y: 150, width: 150, height: 150)
+        imageView.center.x = view.center.x
+        imageView.image = UIImage(named: "logo")
+        return imageView
+    }()
+    
+    private lazy var signInButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 675, width: view.frame.width - 80, height: 60)
         button.center.x = view.center.x
@@ -75,7 +76,7 @@ final class LoginViewController: UIViewController {
         setupUI()
     }
     
-    func setupUI() {
+    private func setupUI() {
         phoneTextField.center.x = view.center.x
         passwordTextField.center.x = view.center.x
         view.backgroundColor = .white
@@ -87,7 +88,7 @@ final class LoginViewController: UIViewController {
         view.addSubview(signInButton)
     }
     
-    @objc func signInButtonAction(sender: UIButton!) {
+    @objc private func signInButtonAction(sender: UIButton!) {
         let foodListViewController = FoodListViewController()
         let navigationController = UINavigationController(rootViewController: foodListViewController)
         navigationController.modalPresentationStyle = .fullScreen

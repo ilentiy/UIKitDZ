@@ -10,7 +10,42 @@ import UIKit
 /// Список доступных пицц
 final class PizzaListViewController: UIViewController {
     
-    lazy var pepperoniView: UIView = {
+    var pizza: [Pizza] = [
+        Pizza(name: "Пепперони",
+              imageName: "пепперони",
+              calories: "1835",
+              proteins: "45",
+              fats: "76",
+              carbohydrates: "350",
+              composition: [
+                "Вода",
+                "Мука",
+                "Томатный соус",
+                "Колбаски пеппероны",
+                "Моцарелла",
+                "Специи"
+              ]
+             ),
+        Pizza(name: "Четыре сыра",
+              imageName: "4сыра",
+              calories: "1997",
+              proteins: "70",
+              fats: "120",
+              carbohydrates: "300",
+              composition: [
+                "Вода",
+                "Мука",
+                "Томатный соус",
+                "Горгонзола",
+                "Моцарелла",
+                "Пармезан",
+                "Гауда",
+                "Специи"
+              ]
+             )
+    ]
+    
+    private lazy var pepperoniView: UIView = {
         var view = UIView()
         view.frame = CGRect(x: 0, y: 200, width: self.view.frame.width - 20, height: 150)
         view.backgroundColor = .white
@@ -39,7 +74,7 @@ final class PizzaListViewController: UIViewController {
         return view
     }()
     
-    lazy var mozarellaView: UIView = {
+    private lazy var mozarellaView: UIView = {
         var view = UIView()
         view.frame = CGRect(x: 0, y: 380, width: self.view.frame.width - 20, height: 150)
         view.backgroundColor = .white
@@ -68,47 +103,12 @@ final class PizzaListViewController: UIViewController {
         return view
     }()
     
-    var pizza: [Pizza] = [
-        Pizza(name: "Пепперони",
-              imageName: "пепперони",
-              calories: "1835",
-              proteins: "45",
-              fats: "76",
-              carbohydrates: "350",
-              composition: [
-              "Вода",
-              "Мука",
-              "Томатный соус",
-              "Колбаски пеппероны",
-              "Моцарелла",
-              "Специи"
-              ]
-             ),
-        Pizza(name: "Четыре сыра",
-              imageName: "4сыра",
-              calories: "1997",
-              proteins: "70",
-              fats: "120",
-              carbohydrates: "300",
-              composition: [
-              "Вода",
-              "Мука",
-              "Томатный соус",
-              "Горгонзола",
-              "Моцарелла",
-              "Пармезан",
-              "Гауда",
-              "Специи"
-              ]
-             )
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    func setupUI() {
+    private func setupUI() {
         title = "Pizza"
         view.backgroundColor = .white
         pepperoniView.center.x = view.center.x
@@ -119,7 +119,7 @@ final class PizzaListViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
     }
     
-    @objc func addPizzaAction(button: UIButton) {
+    @objc private func addPizzaAction(button: UIButton) {
         let ingredientViewController = IngredientViewController()
         ingredientViewController.pizza = pizza[button.tag]
         navigationController?.modalPresentationStyle = .formSheet

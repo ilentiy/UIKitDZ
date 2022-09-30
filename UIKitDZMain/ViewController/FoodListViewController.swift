@@ -10,7 +10,7 @@ import UIKit
 /// Категории еды
 final class FoodListViewController: UIViewController {
     
-    lazy var pizzaView: UIView = {
+    private lazy var pizzaView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 150, width: self.view.frame.width - 20, height: 200)
         view.layer.borderWidth = 1
@@ -38,7 +38,7 @@ final class FoodListViewController: UIViewController {
         return view
     }()
     
-    lazy var sushiView: UIView = {
+    private lazy var sushiView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 360, width: self.view.frame.width - 20, height: 200)
         view.layer.borderWidth = 1
@@ -66,7 +66,7 @@ final class FoodListViewController: UIViewController {
         setupUI()
     }
     
-    func setupUI() {
+    private func setupUI() {
         title = "Food"
         view.backgroundColor = .white
         pizzaView.center.x = view.center.x
@@ -75,7 +75,7 @@ final class FoodListViewController: UIViewController {
         view.addSubview(sushiView)
     }
     
-    @objc func pizzaButtonAction() {
+    @objc private func pizzaButtonAction() {
         let pizzaListViewController = PizzaListViewController()
         navigationController?.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(pizzaListViewController, animated: true)

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// протокол перехода на rootViewController
 protocol GoToRootController: AnyObject {
     func goToRootController()
 }
@@ -123,7 +124,7 @@ final class IngredientViewController: UIViewController {
         setupUI()
     }
     
-    func setupUI() {
+   private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(pizzaNameLabel)
         view.addSubview(pizzaImageView)
@@ -181,6 +182,7 @@ final class IngredientViewController: UIViewController {
     }
 }
 
+/// GoToRootControllet
 extension IngredientViewController: GoToRootController {
     func goToRootController() {
         if let navigationController = self.presentingViewController as? UINavigationController {
