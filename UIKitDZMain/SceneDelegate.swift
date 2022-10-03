@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
-        let rootViewController = ViewController()
+        let rootViewController = TextSettingsViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         let tabBarViewController = UITabBarController()
         tabBarViewController.setViewControllers([navigationController], animated: true)

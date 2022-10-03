@@ -8,7 +8,7 @@
 import UIKit
 
 /// Главный экран
-final class ViewController: UIViewController {
+final class TextSettingsViewController: UIViewController {
     private enum Constants {
         static let alerTitle =  "Введите текст"
         static let colorText = "Цвет текста"
@@ -70,7 +70,7 @@ final class ViewController: UIViewController {
         setupUI()
     }
 
-    // MARK: - Action
+    // MARK: - Private Action
     @objc private func textLabelAction() {
         let addTextAlert = UIAlertController(title: Constants.alerTitle, message: nil, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "ОК", style: .default) {_ in
@@ -124,7 +124,7 @@ final class ViewController: UIViewController {
 }
 
 /// UIPickerViewDataSource
-extension ViewController: UIPickerViewDataSource {
+extension TextSettingsViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -140,7 +140,7 @@ extension ViewController: UIPickerViewDataSource {
     }
 }
 /// UIPickerViewDelegate
-extension ViewController: UIPickerViewDelegate {
+extension TextSettingsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView,
                     viewForRow row: Int,
                     forComponent component: Int,
