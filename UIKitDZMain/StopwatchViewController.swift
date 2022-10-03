@@ -10,6 +10,7 @@ import UIKit
 /// Экран секундомер
 final class StopwatchViewController: UIViewController {
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }

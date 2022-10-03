@@ -10,56 +10,39 @@ import UIKit
 /// Экран таймера
 final class TimerViewController: UIViewController {
     
-    @IBOutlet weak var hmsLabel: UIView!
+    // MARK: - Private Visual Components
+    @IBOutlet private weak var hmsLabel: UIView!
     
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet private weak var startButton: UIButton!
     
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
     
-    @IBOutlet weak var timePicker: UIPickerView!
+    @IBOutlet private weak var timePicker: UIPickerView!
     
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet private weak var timerLabel: UILabel!
     
-    var hour = 0
-    var minute = 0
-    var second = 0
-    var time = 0
+    // MARK: _ Private Property
+    private var hour = 0
+    private var minute = 0
+    private var second = 0
+    private var time = 0
     
-    var timer: Timer?
+    private var timer: Timer?
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    func setupUI() {
+    // MARK: - Private Methods
+    private func setupUI() {
         timePicker.backgroundColor = .clear
         timerLabel.isHidden = true
         timerLabel.textAlignment = .center
     }
     
-    @IBAction func startButtonAction(_ sender: Any) {
-        timePicker.isHidden = true
-        hmsLabel.isHidden = true
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self,
-                                     selector: #selector(update),
-                                     userInfo: nil,
-                                     repeats: true)
-        time = hour * 24 * 60 * 60
-        time += minute * 60
-        time += second
-        timerLabel.isHidden = false
-    }
-    
-    @IBAction func cancelButtonAction(_ sender: Any) {
-        timePicker.isHidden = false
-        hmsLabel.isHidden = false
-        timer?.invalidate()
-        timerLabel.isHidden = true
-    }
-    
-    @objc func update() {
+    @objc private func update() {
         var text = ""
         if time >= 0 {
             var sec = time % 60
@@ -92,6 +75,28 @@ final class TimerViewController: UIViewController {
         }
         timerLabel.text = text
         time -= 1
+    }
+    
+    // MARK: - Private Action
+    @IBAction private func startButtonAction(_ sender: Any) {
+        timePicker.isHidden = true
+        hmsLabel.isHidden = true
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(update),
+                                     userInfo: nil,
+                                     repeats: true)
+        time = hour * 24 * 60 * 60
+        time += minute * 60
+        time += second
+        timerLabel.isHidden = false
+    }
+    
+    @IBAction private func cancelButtonAction(_ sender: Any) {
+        timePicker.isHidden = false
+        hmsLabel.isHidden = false
+        timer?.invalidate()
+        timerLabel.isHidden = true
     }
 }
 

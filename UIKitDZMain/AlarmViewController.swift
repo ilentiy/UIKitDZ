@@ -10,27 +10,29 @@ import UIKit
 /// Экран будильника
 final class AlarmViewController: UIViewController {
     
-    @IBOutlet weak var alarmFirstView: UIView!
+    // MARK: - Private Visual Components
+    @IBOutlet private weak var alarmFirstView: UIView!
     
-    @IBOutlet weak var alarmSecondView: UIView!
+    @IBOutlet private weak var alarmSecondView: UIView!
     
-    @IBOutlet weak var alarmThirdView: UIView!
+    @IBOutlet private weak var alarmThirdView: UIView!
     
-    @IBOutlet weak var firstAlarmSwitch: UISwitch!
+    @IBOutlet private weak var firstAlarmSwitch: UISwitch!
     
-    @IBOutlet weak var secondAlarmSwitch: UISwitch!
+    @IBOutlet private weak var secondAlarmSwitch: UISwitch!
     
-    @IBOutlet weak var thirdAlarmSwitch: UISwitch!
+    @IBOutlet private weak var thirdAlarmSwitch: UISwitch!
     
-    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet private weak var settingButton: UIButton!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    func setupUI() {
+    // MARK: - Private Methods
+    private func setupUI() {
         settingButton.layer.cornerRadius = 25
-        
     }
 }
