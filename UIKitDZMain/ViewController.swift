@@ -14,11 +14,10 @@ final class ViewController: UIViewController {
         static let colorText = "Цвет текста"
         static let numOfLinesText = "Кол-во строк"
         static let viewTitle = "Урок 12"
+        static let colors: [UIColor] = [.black, .orange, .blue, .red, .green]
     }
     
     // MARK: - Private Properties
-    private var colors: [UIColor] = [.black, .orange, .blue, .red, .green]
-
     private var settingPicker = UIPickerView()
     
     private var colorLabel: UILabel = {
@@ -132,7 +131,7 @@ extension ViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
-            return colors.count
+            return Constants.colors.count
         case 1:
             return 10
         default:
@@ -150,7 +149,7 @@ extension ViewController: UIPickerViewDelegate {
         switch component {
         case 0:
             label.frame = CGRect(x: 0, y: 0, width: 30, height: 20)
-            label.backgroundColor = colors[row]
+            label.backgroundColor = Constants.colors[row]
         case 1:
             label.text = "\(row + 1)"
             label.textAlignment = .center
@@ -165,7 +164,7 @@ extension ViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 0:
-            textLabel.textColor = colors[row]
+            textLabel.textColor = Constants.colors[row]
         case 1:
             textLabel.numberOfLines = row + 1
         default:
