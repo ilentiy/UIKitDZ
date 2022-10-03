@@ -7,10 +7,11 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+/// Экран мировые часы
+final class WorldClockViewController: UIViewController {
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
