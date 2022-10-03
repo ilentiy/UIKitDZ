@@ -18,9 +18,14 @@ final class TimerViewController: UIViewController {
     
     @IBOutlet weak var timePicker: UIPickerView!
     
+    @IBOutlet weak var timerLabel: UILabel!
+    
     var hour = 0
     var minute = 0
     var second = 0
+    var time = 0
+    
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +33,66 @@ final class TimerViewController: UIViewController {
     }
     
     func setupUI() {
-        timePicker.backgroundColor = .clear        
+        timePicker.backgroundColor = .clear
+        timerLabel.isHidden = true
+        timerLabel.textAlignment = .center
     }
     
     @IBAction func startButtonAction(_ sender: Any) {
         timePicker.isHidden = true
         hmsLabel.isHidden = true
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(update),
+                                     userInfo: nil,
+                                     repeats: true)
+        time = hour * 24 * 60 * 60
+        time += minute * 60
+        time += second
+        timerLabel.isHidden = false
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         timePicker.isHidden = false
         hmsLabel.isHidden = false
+        timer?.invalidate()
+        timerLabel.isHidden = true
     }
     
+    @objc func update() {
+        var text = ""
+        if time >= 0 {
+            var sec = time % 60
+            var min = time / 60 % 60
+            var hour = time / 60 / 60 / 24
+            switch hour {
+            case 0:
+                text = ""
+            case 1..<10:
+                text = "0\(hour):"
+            default:
+                text = "\(hour):"
+            }
+            switch min {
+            case 0:
+                text += "00:"
+            case 1..<10:
+                text += "0\(min):"
+            default:
+                text += "\(min):"
+            }
+            switch sec {
+            case 0:
+                text += "00"
+            case 1..<10:
+                text += "0\(sec)"
+            default:
+                text += "\(sec)"
+            }
+        }
+        timerLabel.text = text
+        time -= 1
+    }
 }
 
 /// UIPickerViewDataSource
@@ -58,7 +110,6 @@ extension TimerViewController: UIPickerViewDataSource {
             return 60
         }
     }
-    
 }
 
 /// UIPickerViewDelegate
@@ -81,7 +132,6 @@ extension TimerViewController: UIPickerViewDelegate {
                     viewForRow row: Int,
                     forComponent component: Int,
                     reusing view: UIView?) -> UIView {
-       
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center

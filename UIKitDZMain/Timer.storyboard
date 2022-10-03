@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1oi-yN-lV3">
-                                <rect key="frame" x="-1" y="167" width="391" height="257"/>
+                                <rect key="frame" x="-2" y="167" width="391" height="257"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tintColor"/>
                                 <color key="tintColor" systemColor="tintColor"/>
@@ -112,6 +112,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.35305660960000002" green="0.34876525400000002" blue="0.36470794680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-lU-Wap">
+                                <rect key="frame" x="0.0" y="167" width="390" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eJR-8W-QfY"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -122,6 +129,7 @@
                         <outlet property="hmsLabel" destination="6Ex-hg-hdk" id="s7S-Gm-VvU"/>
                         <outlet property="startButton" destination="BUy-Ga-ItN" id="rK2-y7-Kvr"/>
                         <outlet property="timePicker" destination="1oi-yN-lV3" id="Q42-xh-NfH"/>
+                        <outlet property="timerLabel" destination="8zQ-lU-Wap" id="qX5-jO-i2O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rod-lp-j3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
