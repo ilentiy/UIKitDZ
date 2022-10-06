@@ -58,7 +58,6 @@ final class StopwatchViewController: UIViewController {
         guard let button = sender as? UIButton else { return }
         if button.isSelected {
             button.setTitle("Стоп", for: .normal)
-            
             timer = Timer.scheduledTimer(timeInterval: 0.01,
                                          target: self,
                                          selector: #selector(timerUpdate),
@@ -74,5 +73,8 @@ final class StopwatchViewController: UIViewController {
     
     @IBAction func stopButtonAction(_ sender: Any) {
         time = 0
+        minuteLabel.text = "00"
+        secondLabel.text = "00"
+        millisecondLabel.text = "00"
     }
 }
