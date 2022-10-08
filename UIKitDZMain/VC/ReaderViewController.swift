@@ -8,28 +8,25 @@
 import UIKit
 
 protocol ReaderDelegate: AnyObject {
-    func font(fontName: String, size: CGFloat)
-    func fontSize(fontName: String, size: CGFloat)
-    func fontStyle(style: UIFont)
+    func changeFont(font: UIFont)
     func changeTheme(isChange: Bool)
     func textColor(color: UIColor)
 }
 /// Экран читалки
 final class ReaderViewController: UIViewController {
-    private enum Constants {
-        
-    }
+    
     // MARK: - Visual Components
-    private var textView: UITextView {
+    private lazy var readerTextView: UITextView = {
         let textView = UITextView()
         textView.text = "poemText.text"
-        textView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        textView.frame = CGRect(x: 20, y: 100, width: view.bounds.width - 40, height: view.bounds.height - 150)
+        textView.textColor = .black
+        textView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        textView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
         textView.font = UIFont(name: "Helvetica", size: 20)
         textView.isUserInteractionEnabled = false
         return textView
-    }
-    
+    }()
+    // MARK: - Property
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -52,44 +49,34 @@ final class ReaderViewController: UIViewController {
 /// SetupUI
 extension ReaderViewController {
     func setupUI() {
-        view.backgroundColor = .white
-        view.addSubview(textView)
         let barButton = UIBarButtonItem(image: UIImage(systemName: "gearshape"),
                                         style: .plain,
                                         target: self,
                                         action: #selector(barButtonAction))
         navigationItem.setRightBarButton(barButton, animated: true)
+        view.addSubview(readerTextView)
     }
-    
 }
 
 extension ReaderViewController: ReaderDelegate {
-    func font(fontName: String, size: CGFloat) {
-        print("Шрифт")    }
-    
-    func fontSize(fontName: String, size: CGFloat) {
-        print("Размер")
-    }
-    
-    func fontStyle(style: UIFont) {
-        print("Толстый")
+    func changeFont(font: UIFont) {
+        readerTextView.font = font
     }
     
     func changeTheme(isChange: Bool) {
         if isChange {
-            textView.textColor = .white
-            view.backgroundColor = .black
-            textView.backgroundColor = .black
+            readerTextView.backgroundColor = .black
+            guard readerTextView.textColor == .black else { return }
+            readerTextView.textColor = .white
         } else {
-            textView.textColor = .black
-            view.backgroundColor = .white
-            textView.backgroundColor = .white
+            readerTextView.backgroundColor = .white
+            guard readerTextView.textColor == .white else { return }
+            readerTextView.textColor = .black
         }
     }
     
     func textColor(color: UIColor) {
-        print("Цвет")
-        
+        readerTextView.textColor = color
     }
     
 }
