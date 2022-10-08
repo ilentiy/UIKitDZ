@@ -11,19 +11,19 @@ import UIKit
 final class StopwatchViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var minuteLabel: UILabel!
+    @IBOutlet private weak var minuteLabel: UILabel!
     
-    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet private weak var secondLabel: UILabel!
     
-    @IBOutlet weak var millisecondLabel: UILabel!
+    @IBOutlet private weak var millisecondLabel: UILabel!
     
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet private weak var startButton: UIButton!
     
-    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet private weak var stopButton: UIButton!
     
-    // MARK: - Property
-    var timer = Timer()
-    var time = 0
+    // MARK: - Private Property
+    private var timer = Timer()
+    private var time = 0
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ final class StopwatchViewController: UIViewController {
     }
     
     // MARK: - IBActions
-    @IBAction func startButtonAction(_ sender: Any) {
+    @IBAction private func startButtonAction(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
         if button.isSelected {
             button.setTitle("Стоп", for: .normal)
@@ -71,7 +71,7 @@ final class StopwatchViewController: UIViewController {
         }
     }
     
-    @IBAction func stopButtonAction(_ sender: Any) {
+    @IBAction private func stopButtonAction(_ sender: Any) {
         time = 0
         minuteLabel.text = "00"
         secondLabel.text = "00"
