@@ -7,24 +7,25 @@
 
 import UIKit
 
+/// Экран Регистрации
 final class RegistrationViewController: UIViewController {
     
-    // MARK: - Visual Components
+    // MARK: - IBOutlets
+    @IBOutlet private weak var regDataView: UIView!
     
-    @IBOutlet weak var regDataView: UIView!
+    @IBOutlet private weak var emailTextField: UITextField!
     
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var nameTextField: UITextField!
     
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet private weak var userNameTextField: UITextField!
     
-    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet private weak var registrationButton: UIButton!
     
-    @IBOutlet weak var registrationButton: UIButton!
+    // MARK: - Private Property
+    private var defaults = UserDefaults.standard
     
-    // MARK: - Property
-    var defaults = UserDefaults.standard
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +53,7 @@ final class RegistrationViewController: UIViewController {
                let name = nameTextField.text,
                let email = emailTextField.text else { return }
         if login.isEmpty || password.isEmpty || name.isEmpty || email.isEmpty {
-            let alert = UIAlertController(title: "Предупреждение", message: "Есть путые поля", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: .none)
-            alert.addAction(action)
-            present(alert, animated: true, completion: .none)
+            showAlert()
         } else {
             let userInfoDict = ["login": login,
                                 "password": password,
@@ -68,6 +66,18 @@ final class RegistrationViewController: UIViewController {
             nextScreen.modalPresentationStyle = .fullScreen
             self.show(nextScreen, sender: nil)
         }
+    }
+}
+
+/// extension
+extension RegistrationViewController {
+    
+    // MARK: - Private Methods
+    private func showAlert() {
+        let alert = UIAlertController(title: "Предупреждение", message: "Есть путые поля", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: .none)
+        alert.addAction(action)
+        present(alert, animated: true, completion: .none)
     }
 }
 

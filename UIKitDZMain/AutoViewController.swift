@@ -11,9 +11,10 @@ import UIKit
 final class AutoViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var loginTextField: UITextField!
+    @IBOutlet private weak var loginTextField: UITextField!
     
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +44,22 @@ final class AutoViewController: UIViewController {
             nextScreen.modalPresentationStyle = .fullScreen
             self.show(nextScreen, sender: nil)
         } else {
-            let alert = UIAlertController(title: "Предупреждение",
-                                          message: "Пользователь не найден",
-                                          preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: .none)
-            alert.addAction(action)
-            present(alert, animated: true, completion: .none)
+            showAlert()
         }
         
+    }
+}
+
+/// extension
+extension AutoViewController {
+    // MARK: - Private Methods
+    private func showAlert() {
+        let alert = UIAlertController(title: "Предупреждение",
+                                      message: "Пользователь не найден",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: .none)
+        alert.addAction(action)
+        present(alert, animated: true, completion: .none)
     }
 }
 
