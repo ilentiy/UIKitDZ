@@ -9,9 +9,7 @@ import UIKit
 
 /// Настройки  читалки
 class SettingsViewController: UIViewController {
-    private enum Constants {
-        static let labelText = "A"
-    }
+    
     // MARK: - Visual Components
     private lazy var themeSwitch: UISwitch = {
         let themeSwitch = UISwitch()
@@ -136,10 +134,11 @@ class SettingsViewController: UIViewController {
                                          .bold,
                                          .heavy,
                                          .black]
+    
     private var fonts = UIFont.familyNames.sorted()
-    private var selectFont = "Helvetica"
-    private var selectSize: CGFloat = 20
-    private lazy var currentFont = UIFont(name: selectFont, size: selectSize)
+    private var selectFont = Constants.defaultFontName
+    private var selectSize = Constants.defaulttFontSize
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,28 +149,10 @@ class SettingsViewController: UIViewController {
     @objc private func changeTheme() {
         if themeSwitch.isOn {
             view.backgroundColor = .black
-            fontSizeSlider.tintColor = .white
-            leftSliderLabel.textColor = .white
-            rightSliderLabel.textColor = .white
-            defaultColorButton.backgroundColor = .white
-            boldFontButton.setTitleColor( .white, for: .normal)
-            boldFontButton.layer.borderColor = UIColor.lightGray.cgColor
-            thinFontButton.setTitleColor( .white, for: .normal)
-            thinFontButton.layer.borderColor = UIColor.lightGray.cgColor
-            fontPickerView.setValue(UIColor.white, forKeyPath: "textColor")
-            
         } else {
             view.backgroundColor = .white
-            fontSizeSlider.tintColor = .black
-            leftSliderLabel.textColor = .black
-            rightSliderLabel.textColor = .black
-            defaultColorButton.backgroundColor = .black
-            boldFontButton.setTitleColor( .black, for: .normal)
-            boldFontButton.layer.borderColor = UIColor.darkGray.cgColor
-            thinFontButton.setTitleColor( .black, for: .normal)
-            thinFontButton.layer.borderColor = UIColor.darkGray.cgColor
-            fontPickerView.setValue(UIColor.black, forKeyPath: "textColor")
         }
+        setupTheme()
         delegate?.changeTheme(isChange: themeSwitch.isOn)
     }
     
@@ -190,19 +171,17 @@ class SettingsViewController: UIViewController {
         guard let changedFont = UIFont(name: selectFont, size: selectSize) else { return }
         switch sender.tag {
         case 0:
-            delegate?.changeFont(font: changedFont.regular)
+            delegate?.changeFontWeight(weight: changedFont.regular)
         case 1:
-            delegate?.changeFont(font: changedFont.bold)
+            delegate?.changeFontWeight(weight: changedFont.bold)
         default:
             break
         }
     }
-    
 }
 /// SetupUI
 extension SettingsViewController {
-    func setupUI() {
-        view.backgroundColor = .white
+    private func setupUI() {
         view.addSubview(themeSwitch)
         view.addSubview(fontSizeSlider)
         view.addSubview(leftSliderLabel)
@@ -215,6 +194,33 @@ extension SettingsViewController {
         view.addSubview(thinFontButton)
         view.addSubview(fontPickerView)
     }
+     func setupTheme() {
+        if view.backgroundColor == .black {
+            fontSizeSlider.tintColor = .white
+            leftSliderLabel.textColor = .white
+            rightSliderLabel.textColor = .white
+            defaultColorButton.backgroundColor = .white
+            boldFontButton.setTitleColor( .white, for: .normal)
+            boldFontButton.layer.borderColor = UIColor.lightGray.cgColor
+            thinFontButton.setTitleColor( .white, for: .normal)
+            thinFontButton.layer.borderColor = UIColor.lightGray.cgColor
+            fontPickerView.setValue(UIColor.white, forKeyPath: "textColor")
+            themeSwitch.isOn = true
+        }
+        if view.backgroundColor == .white {
+            fontSizeSlider.tintColor = .black
+            leftSliderLabel.textColor = .black
+            rightSliderLabel.textColor = .black
+            defaultColorButton.backgroundColor = .black
+            boldFontButton.setTitleColor( .black, for: .normal)
+            boldFontButton.layer.borderColor = UIColor.darkGray.cgColor
+            thinFontButton.setTitleColor( .black, for: .normal)
+            thinFontButton.layer.borderColor = UIColor.darkGray.cgColor
+            fontPickerView.setValue(UIColor.black, forKeyPath: "textColor")
+            themeSwitch.isOn = false
+        }
+    }
+    
 }
 
 // MARK: - UIPickerViewDelegate
@@ -240,4 +246,5 @@ extension SettingsViewController: UIPickerViewDataSource {
         guard let changedFont = UIFont(name: selectFont, size: selectSize) else { return }
         delegate?.changeFont(font: changedFont)
     }
+    
 }

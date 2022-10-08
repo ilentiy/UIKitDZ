@@ -9,8 +9,38 @@ import UIKit
 
 protocol ReaderDelegate: AnyObject {
     func changeFont(font: UIFont)
+    func changeFontWeight(weight: UIFont)
     func changeTheme(isChange: Bool)
     func textColor(color: UIColor)
+}
+
+// MARK: - Constants
+enum Constants {
+    static let labelText = "A"
+    static let defaultFontName = "Helvetica"
+    static let defaulttFontSize: CGFloat = 20
+    static let settingButtonImageName = "gearshape"
+    static let text = """
+        Я покинул родимый дом,
+        Голубую оставил Русь.
+        В три звезды березняк над прудом
+        Теплит матери старой грусть.
+        
+        Золотою лягушкой луна
+        Распласталась на тихой воде.
+        Словно яблонный цвет, седина
+        У отца пролилась в бороде.
+        
+        Я не скоро, не скоро вернусь!
+        Долго петь и звенеть пурге.
+        Стережет голубую Русь
+        Старый клен на одной ноге.
+        
+        И я знаю, есть радость в нем
+        Тем, кто листьев целует дождь,
+        Оттого, что тот старый клен
+        Головой на меня похож.
+        """
 }
 /// Экран читалки
 final class ReaderViewController: UIViewController {
@@ -18,23 +48,27 @@ final class ReaderViewController: UIViewController {
     // MARK: - Visual Components
     private lazy var readerTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "poemText.text"
+        textView.text = Constants.text
         textView.textColor = .black
         textView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         textView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-        textView.font = UIFont(name: "Helvetica", size: 20)
+        textView.font = UIFont(name: Constants.defaultFontName, size: Constants.defaulttFontSize)
         textView.isUserInteractionEnabled = false
         return textView
     }()
-    // MARK: - Property
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    @objc func barButtonAction() {
+    // MARK: - Action
+    @objc private  func barButtonAction() {
         let settingsViewController = SettingsViewController()
         settingsViewController.delegate = self
+        settingsViewController.view.backgroundColor = readerTextView.backgroundColor
+        settingsViewController.setupTheme()
         if let sheet = settingsViewController.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.largestUndimmedDetentIdentifier = .medium
@@ -46,10 +80,12 @@ final class ReaderViewController: UIViewController {
     }
 }
 
-/// SetupUI
+/// extension
 extension ReaderViewController {
-    func setupUI() {
-        let barButton = UIBarButtonItem(image: UIImage(systemName: "gearshape"),
+    
+    // MARK: - Private Methods
+    private func setupUI() {
+        let barButton = UIBarButtonItem(image: UIImage(systemName: Constants.settingButtonImageName),
                                         style: .plain,
                                         target: self,
                                         action: #selector(barButtonAction))
@@ -58,7 +94,12 @@ extension ReaderViewController {
     }
 }
 
+/// ReaderDelegate
 extension ReaderViewController: ReaderDelegate {
+    func changeFontWeight(weight: UIFont) {
+        readerTextView.font = weight
+    }
+    
     func changeFont(font: UIFont) {
         readerTextView.font = font
     }
@@ -78,5 +119,4 @@ extension ReaderViewController: ReaderDelegate {
     func textColor(color: UIColor) {
         readerTextView.textColor = color
     }
-    
 }
