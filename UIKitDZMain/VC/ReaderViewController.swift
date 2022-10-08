@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol ReaderDelegate: AnyObject {
+    func font(fontName: String, size: CGFloat)
+    func fontSize(fontName: String, size: CGFloat)
+    func fontStyle(style: UIFont)
+    func changeTheme(isChange: Bool)
+    func textColor(color: UIColor)
+}
 /// Экран читалки
 final class ReaderViewController: UIViewController {
     private enum Constants {
@@ -30,6 +37,7 @@ final class ReaderViewController: UIViewController {
     
     @objc func barButtonAction() {
         let settingsViewController = SettingsViewController()
+        settingsViewController.delegate = self
         if let sheet = settingsViewController.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.largestUndimmedDetentIdentifier = .medium
@@ -44,13 +52,44 @@ final class ReaderViewController: UIViewController {
 /// SetupUI
 extension ReaderViewController {
     func setupUI() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
         view.addSubview(textView)
         let barButton = UIBarButtonItem(image: UIImage(systemName: "gearshape"),
                                         style: .plain,
                                         target: self,
                                         action: #selector(barButtonAction))
         navigationItem.setRightBarButton(barButton, animated: true)
+    }
+    
+}
+
+extension ReaderViewController: ReaderDelegate {
+    func font(fontName: String, size: CGFloat) {
+        print("Шрифт")    }
+    
+    func fontSize(fontName: String, size: CGFloat) {
+        print("Размер")
+    }
+    
+    func fontStyle(style: UIFont) {
+        print("Толстый")
+    }
+    
+    func changeTheme(isChange: Bool) {
+        if isChange {
+            textView.textColor = .white
+            view.backgroundColor = .black
+            textView.backgroundColor = .black
+        } else {
+            textView.textColor = .black
+            view.backgroundColor = .white
+            textView.backgroundColor = .white
+        }
+    }
+    
+    func textColor(color: UIColor) {
+        print("Цвет")
+        
     }
     
 }

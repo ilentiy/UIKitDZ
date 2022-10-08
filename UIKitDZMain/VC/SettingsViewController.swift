@@ -10,6 +10,7 @@ import UIKit
 /// Настройки  читалки
 class SettingsViewController: UIViewController {
     
+    // MARK: - Visual Components
     lazy var themeSwitch: UISwitch = {
         let themeSwitch = UISwitch()
         themeSwitch.frame = CGRect(x: 60, y: 30, width: 0, height: 0)
@@ -49,34 +50,41 @@ class SettingsViewController: UIViewController {
         return label
     }()
     
+    // MARK: - Public Property
+    weak var delegate: ReaderDelegate?
+    
+    // MARK: - Private Property
+    private var colors: [UIColor] = [.black, .systemBlue, .systemBrown, .systemOrange]
+
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-}
-/// SetupUI
-extension SettingsViewController {
-    func setupUI() {
-        title = "Настройки"
-        view.backgroundColor = .white
-        view.addSubview(themeSwitch)
-        view.addSubview(fontSizeSlider)
-        view.addSubview(leftSliderLabel)
-        view.addSubview(rightSliderLabel)
-    }
     
+    // MARK: - Methods
     @objc func changeTheme() {
         if themeSwitch.isOn {
             view.backgroundColor = .black
             fontSizeSlider.tintColor = .orange
             leftSliderLabel.textColor = .orange
             rightSliderLabel.textColor = .orange
-            
         } else {
             view.backgroundColor = .white
             fontSizeSlider.tintColor = .blue
             leftSliderLabel.textColor = .blue
             rightSliderLabel.textColor = .blue
         }
+        delegate?.changeTheme(isChange: themeSwitch.isOn)
+    }
+}
+/// SetupUI
+extension SettingsViewController {
+    func setupUI() {
+        view.backgroundColor = .white
+        view.addSubview(themeSwitch)
+        view.addSubview(fontSizeSlider)
+        view.addSubview(leftSliderLabel)
+        view.addSubview(rightSliderLabel)
     }
 }
