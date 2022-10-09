@@ -13,13 +13,14 @@ final class MainViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var welcomeLabel: UILabel!
     
-    @IBOutlet weak var importanceSwitch: UISwitch!
+    @IBOutlet private weak var importanceSwitch: UISwitch!
     
-    @IBOutlet weak var addReminder: UIButton!
+    @IBOutlet private weak var addReminder: UIButton!
     
-    @IBOutlet weak var reminderTextField: UITextField!
+    @IBOutlet private weak var reminderTextField: UITextField!
     
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var datePicker: UIDatePicker!
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +39,6 @@ final class MainViewController: UIViewController {
         }
     }
     @IBAction func addReminderAction(_ sender: Any) {
-        showAlert()
-    }
-}
-
-/// extension
-extension MainViewController {
-    func showAlert() {
         let dateFormat = DateFormatter()
         dateFormat.dateStyle = .medium
         dateFormat.timeStyle = .short
@@ -56,13 +50,7 @@ extension MainViewController {
             }
             return text
         }()
-        
-        let messageText = "Нужно это сделать " + dateFormat.string(from: datePicker.date)
-        let reminderAlert = UIAlertController(title: title,
-                                              message: messageText,
-                                              preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Добавить", style: .default)
-        reminderAlert.addAction(alertAction)
-        present(reminderAlert, animated: true)
+        let message = "Нужно это сделать " + dateFormat.string(from: datePicker.date)
+        showAlert(title: title, message: message)
     }
 }

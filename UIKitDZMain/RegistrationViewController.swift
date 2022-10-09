@@ -53,7 +53,7 @@ final class RegistrationViewController: UIViewController {
                let name = nameTextField.text,
                let email = emailTextField.text else { return }
         if login.isEmpty || password.isEmpty || name.isEmpty || email.isEmpty {
-            showAlert()
+            showAlert(title: "Предупреждение", message: "Есть путые поля")
         } else {
             let userInfoDict = ["login": login,
                                 "password": password,
@@ -66,18 +66,6 @@ final class RegistrationViewController: UIViewController {
             nextScreen.modalPresentationStyle = .fullScreen
             self.show(nextScreen, sender: nil)
         }
-    }
-}
-
-/// extension
-extension RegistrationViewController {
-    
-    // MARK: - Private Methods
-    private func showAlert() {
-        let alert = UIAlertController(title: "Предупреждение", message: "Есть путые поля", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: .none)
-        alert.addAction(action)
-        present(alert, animated: true, completion: .none)
     }
 }
 

@@ -27,12 +27,10 @@ final class AutoViewController: UIViewController {
             loginTextField.text = user["login"]
             passwordTextField.text = user["password"]
         }
-        
     }
+    
     // MARK: - IBActions
-    @IBAction func registrationButtonAction(_ sender: Any) {
-        
-    }
+    @IBAction func registrationButtonAction(_ sender: Any) {}
     
     @IBAction func signinButtonAction(_ sender: Any) {
         guard let user = UserDefaults.standard.object(forKey: "userInfo") as? [String: String] else { return }
@@ -44,25 +42,10 @@ final class AutoViewController: UIViewController {
             nextScreen.modalPresentationStyle = .fullScreen
             self.show(nextScreen, sender: nil)
         } else {
-            showAlert()
+            showAlert(title: "Предупреждение", message: "Пользователь не найден")
         }
-        
     }
 }
-
-/// extension
-extension AutoViewController {
-    // MARK: - Private Methods
-    private func showAlert() {
-        let alert = UIAlertController(title: "Предупреждение",
-                                      message: "Пользователь не найден",
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: .none)
-        alert.addAction(action)
-        present(alert, animated: true, completion: .none)
-    }
-}
-
 /// UITextFieldDelegate
 extension AutoViewController: UITextFieldDelegate {
     
