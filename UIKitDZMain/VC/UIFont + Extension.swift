@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIFont {
+    
     var ultraLight: UIFont { return withWeight(.ultraLight) }
     var thin: UIFont { return withWeight(.thin) }
     var light: UIFont { return withWeight(.light) }

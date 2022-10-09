@@ -7,22 +7,17 @@
 
 import UIKit
 
+/// Повтор видео урока
 final class ViewController: UIViewController {
     
     var myTextView = UITextView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNotification()
         setupUI()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTextView),
-                                               name: UIResponder.keyboardDidShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTextView),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
     }
-    func setupUI() {
+    
+    private func setupUI() {
         myTextView = UITextView(frame: CGRect(x: 20,
                                               y: 250,
                                               width: view.bounds.width - 40,
@@ -34,12 +29,23 @@ final class ViewController: UIViewController {
         view.addSubview(myTextView)
     }
     
+    private func setupNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTextView),
+                                               name: UIResponder.keyboardDidShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTextView),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
     override func touchesBegan(_ toucheSet: Set<UITouch>, with event: UIEvent?) {
         myTextView.resignFirstResponder()
         myTextView.backgroundColor = .white
     }
     
-   @objc func updateTextView(param: Notification) {
+    @objc func updateTextView(param: Notification) {
         let userInfo = param.userInfo
         
         guard let getKeyboardRect = (userInfo?[UIResponder.keyboardFrameBeginUserInfoKey]
@@ -53,7 +59,4 @@ final class ViewController: UIViewController {
         }
         myTextView.scrollRangeToVisible(myTextView.selectedRange)
     }
-}
-extension ViewController: UITextViewDelegate {
-    
 }

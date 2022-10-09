@@ -42,6 +42,7 @@ enum Constants {
         Головой на меня похож.
         """
 }
+
 /// Экран читалки
 final class ReaderViewController: UIViewController {
     
@@ -96,6 +97,7 @@ extension ReaderViewController {
 
 /// ReaderDelegate
 extension ReaderViewController: ReaderDelegate {
+    
     func changeFontWeight(weight: UIFont) {
         readerTextView.font = weight
     }

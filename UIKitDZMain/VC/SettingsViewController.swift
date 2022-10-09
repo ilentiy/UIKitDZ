@@ -8,7 +8,7 @@
 import UIKit
 
 /// Настройки  читалки
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
     
     // MARK: - Visual Components
     private lazy var themeSwitch: UISwitch = {
@@ -51,7 +51,7 @@ class SettingsViewController: UIViewController {
         return label
     }()
     
-    private  lazy var defaultColorButton: UIButton = {
+    private lazy var defaultColorButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 65, y: 80, width: 40, height: 40))
         button.layer.cornerRadius = 20
         button.backgroundColor = .black
@@ -59,7 +59,7 @@ class SettingsViewController: UIViewController {
         return button
     }()
     
-    private  lazy var orangeButton: UIButton = {
+    private lazy var orangeButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 148, y: 80, width: 40, height: 40))
         button.layer.cornerRadius = 20
         button.backgroundColor = .orange
@@ -67,7 +67,7 @@ class SettingsViewController: UIViewController {
         return button
     }()
     
-    private  lazy var blueButton: UIButton = {
+    private lazy var blueButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 231, y: 80, width: 40, height: 40))
         button.layer.cornerRadius = 20
         button.backgroundColor = .blue
@@ -75,7 +75,7 @@ class SettingsViewController: UIViewController {
         return button
     }()
     
-    private  lazy var greenButton: UIButton = {
+    private lazy var greenButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 315, y: 80, width: 40, height: 40))
         button.layer.cornerRadius = 20
         button.backgroundColor = .green
@@ -179,8 +179,11 @@ class SettingsViewController: UIViewController {
         }
     }
 }
+
 /// SetupUI
 extension SettingsViewController {
+    
+    // MARK: - Private Methods
     private func setupUI() {
         view.addSubview(themeSwitch)
         view.addSubview(fontSizeSlider)
@@ -194,7 +197,9 @@ extension SettingsViewController {
         view.addSubview(thinFontButton)
         view.addSubview(fontPickerView)
     }
-     func setupTheme() {
+    
+    // MARK: - Public Methods
+    func setupTheme() {
         if view.backgroundColor == .black {
             fontSizeSlider.tintColor = .white
             leftSliderLabel.textColor = .white
@@ -220,7 +225,6 @@ extension SettingsViewController {
             themeSwitch.isOn = false
         }
     }
-    
 }
 
 // MARK: - UIPickerViewDelegate
@@ -246,5 +250,4 @@ extension SettingsViewController: UIPickerViewDataSource {
         guard let changedFont = UIFont(name: selectFont, size: selectSize) else { return }
         delegate?.changeFont(font: changedFont)
     }
-    
 }
