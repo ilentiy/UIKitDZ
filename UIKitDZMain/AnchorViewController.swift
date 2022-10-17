@@ -10,7 +10,7 @@ import UIKit
 /// Светофор якорями
 final class AnchorViewController: UIViewController {
     
-    // MARK: - Visual Components
+    // MARK: - Private Visual Components
     private let redView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +59,6 @@ final class AnchorViewController: UIViewController {
         createBlackViewConstraint()
     }
     
-    // MARK: - Layout Anchor
    private func createRedViewConstraint() {
         redView.centerXAnchor.constraint(equalTo: yellowView.centerXAnchor).isActive = true
         redView.centerYAnchor.anchorWithOffset(to: yellowView.centerYAnchor)
@@ -89,5 +88,4 @@ final class AnchorViewController: UIViewController {
         blackView.widthAnchor.constraint(equalTo: yellowView.widthAnchor, multiplier: 1.25).isActive = true
         blackView.heightAnchor.constraint(equalTo: blackView.widthAnchor, multiplier: 2.8).isActive = true
      }
-    
 }

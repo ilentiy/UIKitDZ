@@ -10,7 +10,7 @@ import UIKit
 /// Светофор констрейнтами
 final class ConstraintViewController: UIViewController {
     
-    // MARK: - Visual Components
+    // MARK: - Private Visual Components
     private let redView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -57,10 +57,9 @@ final class ConstraintViewController: UIViewController {
         createYellowViewConstraint()
         createGreenViewConstraint()
         createBlackViewConstraint()
-        
     }
     
-   private  func createRedViewConstraint() {
+   private func createRedViewConstraint() {
         NSLayoutConstraint(item: redView,
                            attribute: .centerX,
                            relatedBy: .equal,

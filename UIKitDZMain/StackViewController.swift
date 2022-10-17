@@ -7,10 +7,10 @@
 
 import UIKit
 
-// Stack View светофор
+/// Stack View светофор
 final class StackViewController: UIViewController {
 
-    // MARK: - Visual Components
+    // MARK: - Private Visual Components
     private let redView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
